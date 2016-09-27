@@ -1,0 +1,21 @@
+{
+	"name": "a-scrollbar-fill",
+	"description": "Javascript shim to create scrolling divs with content that ignores scrollbar width",
+	"author": "srouse",
+	"version": "0.0.1",
+	"dependencies": {},
+	"devDependencies": {},
+	"main": "a-scrollbar-fill.js",
+	"scripts": {
+	    "test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://srouse@github.com/srouse/a-scrollbar-fill.git"
+	},
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/srouse/a-scrollbar-fill/issues"
+	},
+	"homepage": "https://github.com/srouse/a-scrollbar-fill"
+}

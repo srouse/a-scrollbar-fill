@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>a-scrollbar-fill</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="utf-8">
+		<script>
+            var script = document.createElement('script');
+            script.src = "../a-scrollbar-fill.js?"+Math.random();
+            document.write(script.outerHTML);
+		</script>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            .container {
+                width: 30%; height: 80vh;
+                float: left;
+                background: #eee;
+            }
+                .content {
+                    padding: 0px 5vw;
+                    position: relative;
+                }
+                .content_body {
+                    background-color: #f00;
+                    height: 500px; width: 100%;
+                    text-align: center;
+                }
+        </style>
+	</head>
+	<body style="background: #eee">
+		<div class="a-scrollbar-fill container"
+            style="margin-right: 5%;">
+            <div class="content">
+                <div class="content_body">
+                    a-scrollbar-fill
+                </div>
+            </div>
+		</div>
+        <div class="a-scrollbar-fill-auto container"
+            style="margin-right: 5%;">
+            <div class="content">
+                <div class="content_body">
+                    a-scrollbar-fill-auto
+                </div>
+            </div>
+		</div>
+        <div class="container" style="overflow-y: auto;">
+            <div class="content">
+                <div class="content_body">
+                    overflow-y: auto;
+                </div>
+            </div>
+		</div>
+        <div style="width: 100%; text-align: center; padding: 20px; float: left; clear: left;">
+            The box on the left has a width that ignores the scrollbar width. (Change your browser's height)
+        </div>
+    </body>
+</html>
