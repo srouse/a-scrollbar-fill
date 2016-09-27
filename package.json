@@ -2,7 +2,7 @@
 	"name": "a-scrollbar-fill",
 	"description": "Javascript shim to create scrolling divs with content that ignores scrollbar width",
 	"author": "srouse",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"dependencies": {},
 	"devDependencies": {},
 	"main": "a-scrollbar-fill.js",

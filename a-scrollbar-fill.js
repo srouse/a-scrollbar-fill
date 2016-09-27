@@ -19,7 +19,7 @@ function createScrollbarFill () {
                         -webkit-background-clip: padding;\
                         background-clip: padding-box;\
                         border: 3px solid rgba( 255,255,255,0) !important;\
-                        background: #c1c1c2 !important;\
+                        background: rgba( 0,0,0,.2) !important;\
                         background-clip: content-box !important;\
                     }\
                     .a-scrollbar-fill::-webkit-scrollbar-corner,\
@@ -75,21 +75,25 @@ function createScrollbarFill () {
     var is_firefox = !!navigator.userAgent.match(/firefox/i);
     var is_edge = !!navigator.userAgent.match(/edge/i);
 
-    var style_str = '.a-scrollbar-fill-auto,.a-scrollbar-fill { position: relative; };';//width: 100% !important;  }';
+    var style_str;
 
     if ( scrollbarWidth > 0 ) {
         style_str = '.a-scrollbar-fill > * { width: calc( 100% + ' + scrollbarWidth + 'px ) !important; }';
         style_str += '.a-scrollbar-margin-right { margin-right: ' + scrollbarWidth + 'px !important; }';
+    }else{
+        style_str = '.a-scrollbar-fill-auto > *,.a-scrollbar-fill > * { width: 100% !important;  }';
+        style_str += '.a-scrollbar-margin-right { margin-right: 0px !important; }';
     }
 
     if ( is_firefox || is_edge ) {
-        style_str = '.a-scrollbar-fill-auto > * { width: 100% !important; }';
+        style_str += '.a-scrollbar-fill-auto > * { width: 100% !important; }';
         style_str += '.a-scrollbar-fill-auto { overflow-y: auto !important; overflow-x: hidden !important; }';
     }else{
-        style_str = '.a-scrollbar-fill-auto > * { width: calc( 100% + ' + scrollbarWidth + 'px ) !important; }';
+        style_str += '.a-scrollbar-fill-auto > * { width: calc( 100% + ' + scrollbarWidth + 'px ) !important; }';
         style_str += '.a-scrollbar-fill-auto { overflow-y: scroll !important; overflow-x: hidden !important; }';
     }
 
+    style_str += '.a-scrollbar-fill-auto,.a-scrollbar-fill { position: relative;  }';
     style_str += '.a-scrollbar-fill{ overflow-y: scroll !important; overflow-x: hidden !important; }';
 
     var node = document.createElement('style');
