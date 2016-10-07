@@ -4,16 +4,19 @@ function createScrollbarFill () {
 
     var scrollbar_style_str = '\
                     .a-scrollbar-fill::-webkit-scrollbar,\
-                    .a-scrollbar-fill-auto::-webkit-scrollbar {\
+                    .a-scrollbar-fill-auto::-webkit-scrollbar,\
+                    .a-scrollbar-fill-hover::-webkit-scrollbar {\
                         width: 10px !important;\
                         height: 10px !important;\
                     }\
                     .a-scrollbar-fill::-webkit-scrollbar-track,\
-                    .a-scrollbar-fill-auto::-webkit-scrollbar-track {\
+                    .a-scrollbar-fill-auto::-webkit-scrollbar-track,\
+                    .a-scrollbar-fill-hover::-webkit-scrollbar-track {\
                         background: transparent;\
                     }\
                     .a-scrollbar-fill::-webkit-scrollbar-thumb,\
-                    .a-scrollbar-fill-auto::-webkit-scrollbar-thumb {\
+                    .a-scrollbar-fill-auto::-webkit-scrollbar-thumb,\
+                    .a-scrollbar-fill-hover::-webkit-scrollbar-thumb {\
                         border-radius: 5px !important;\
                         -moz-background-clip: padding;\
                         -webkit-background-clip: padding;\
@@ -23,17 +26,20 @@ function createScrollbarFill () {
                         background-clip: content-box !important;\
                     }\
                     .a-scrollbar-fill::-webkit-scrollbar-corner,\
-                    .a-scrollbar-fill-auto::-webkit-scrollbar-corner {\
+                    .a-scrollbar-fill-auto::-webkit-scrollbar-corner,\
+                    .a-scrollbar-fill-hover::-webkit-scrollbar-corner {\
                         background: transparent !important;\
                     }\
                     .a-scrollbar-fill::-webkit-scrollbar-thumb:vertical:active,\
-                    .a-scrollbar-fill-auto::-webkit-scrollbar-thumb:vertical:active {\
+                    .a-scrollbar-fill-auto::-webkit-scrollbar-thumb:vertical:active,\
+                    .a-scrollbar-fill-hover::-webkit-scrollbar-thumb:vertical:active {\
                         border-radius: 0 !important;\
                         border-left-width: 0 !important;\
                         border-right-width: 0 !important;\
                     }\
                     .a-scrollbar-fill::-webkit-scrollbar-thumb:horizontal:active,\
-                    .a-scrollbar-fill-auto::-webkit-scrollbar-thumb:horizontal:active {\
+                    .a-scrollbar-fill-auto::-webkit-scrollbar-thumb:horizontal:active,\
+                    .a-scrollbar-fill-hover::-webkit-scrollbar-thumb:horizontal:active {\
                         border-radius: 0 !important;\
                         border-top-width: 0 !important;\
                         border-bottom-width: 0 !important;\
@@ -75,13 +81,20 @@ function createScrollbarFill () {
     var is_firefox = !!navigator.userAgent.match(/firefox/i);
     var is_edge = !!navigator.userAgent.match(/edge/i);
 
-    var style_str;
+    var style_str = "";
+
+    // maybe use namespaces: scbr-fill, scbr-fill-auto, scbr-fill-hover
 
     if ( scrollbarWidth > 0 ) {
-        style_str = '.a-scrollbar-fill > * { width: calc( 100% + ' + scrollbarWidth + 'px ) !important; }';
+        style_str += '.a-scrollbar-fill > * { width: calc( 100% + ' + scrollbarWidth + 'px ) !important; }';
+
+        style_str += '.a-scrollbar-fill-hover > * { width: 100% !important; }';
+        style_str += '.a-scrollbar-fill-hover:hover > * { width: calc( 100% + ' + scrollbarWidth + 'px ) !important; }';
+
         style_str += '.a-scrollbar-margin-right { margin-right: ' + scrollbarWidth + 'px !important; }';
     }else{
-        style_str = '.a-scrollbar-fill-auto > *,.a-scrollbar-fill > * { width: 100% !important;  }';
+        style_str += '.a-scrollbar-fill-auto > *,.a-scrollbar-fill > *, .a-scrollbar-fill-hover > * { width: 100% !important;  }';
+
         style_str += '.a-scrollbar-margin-right { margin-right: 0px !important; }';
     }
 
@@ -93,8 +106,12 @@ function createScrollbarFill () {
         style_str += '.a-scrollbar-fill-auto { overflow-y: scroll !important; overflow-x: hidden !important; }';
     }
 
-    style_str += '.a-scrollbar-fill-auto,.a-scrollbar-fill { position: relative;  }';
+    style_str += '.a-scrollbar-fill-auto,.a-scrollbar-fill-hover,.a-scrollbar-fill { position: relative;  }';
+
     style_str += '.a-scrollbar-fill{ overflow-y: scroll !important; overflow-x: hidden !important; }';
+
+    style_str += '.a-scrollbar-fill-hover { overflow-y: hidden !important; overflow-x: hidden !important; }';
+    style_str += '.a-scrollbar-fill-hover:hover { overflow-y: scroll !important; overflow-x: hidden !important; }';
 
     var node = document.createElement('style');
     node.innerHTML = style_str;
