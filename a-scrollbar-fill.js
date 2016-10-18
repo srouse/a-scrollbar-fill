@@ -106,6 +106,8 @@ function createScrollbarFill () {
         style_str += '.a-scrollbar-fill-auto { overflow-y: auto !important; overflow-x: hidden !important; }';
 
         style_str += '.a-scrollbar-fill-none > * { width: calc( 100% + ' + scrollbarWidth + 'px ) !important; }';
+        //style_str += '.a-scrollbar-fill-none { margin-right: -' + scrollbarWidth + 'px !important; }';
+        //style_str += '.a-scrollbar-fill-none > * { width: 100% !important; }';
     }else{
         style_str += '.a-scrollbar-fill-auto > * { width: calc( 100% + ' + scrollbarWidth + 'px ) !important; }';
         style_str += '.a-scrollbar-fill-auto { overflow-y: scroll !important; overflow-x: hidden !important; }';
@@ -115,9 +117,9 @@ function createScrollbarFill () {
 
     style_str += '.a-scrollbar-fill-auto,.a-scrollbar-fill-hover,.a-scrollbar-fill { position: relative;  }';
 
-    style_str += '.a-scrollbar-fill{ overflow-y: scroll !important; overflow-x: hidden !important; }';
+    style_str += '.a-scrollbar-fill { overflow-y: scroll !important; overflow-x: hidden !important; }';
 
-    style_str += '.a-scrollbar-fill-none{ overflow-y: scroll !important; overflow-x: hidden !important; }';
+    style_str += '.a-scrollbar-fill-none { overflow-y: scroll !important; overflow-x: hidden !important; }';
 
     style_str += '.a-scrollbar-fill-hover { overflow-y: hidden !important; overflow-x: hidden !important; }';
     style_str += '.a-scrollbar-fill-hover:hover { overflow-y: scroll !important; overflow-x: hidden !important; }';
